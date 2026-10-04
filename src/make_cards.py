@@ -87,7 +87,47 @@ cards["portfolio-8-image-pipeline"] = page(
     box(80,800,1440,130,"t","Why it matters",["A new product goes from idea to live listing, pins and social posts in minutes, with every image on-brand."]),
     "Python · Pillow · ReportLab · Printify API · Etsy API · headless Chromium")
 
+cards["portfolio-9-blender-addons"] = page(
+    "Blender add-ons for 3D printing, sold on Gumroad",
+    "Three tested add-ons: split big models to fit the bed, repair broken meshes, preflight game assets",
+    arrows([(470,330,600,330),(1000,330,1100,330),(800,450,800,540),(1000,640,1100,640)]) +
+    box(80,220,390,230,"o","Bed Fit Splitter ($19)",["Enter your printer bed size","Plans cuts + alignment dowels","Exports oriented STLs + plan"]) +
+    box(600,220,400,230,"t","Print Fix ($15)",["Finds print-blocking problems","Repairs a copy in stages","Re-verifies, original untouched"]) +
+    box(1100,220,420,230,"p","Asset Preflight ($19)",["Transforms, UVs, texel density","Verified one-click fixes","Rolls back if shape changes"]) +
+    box(600,540,400,210,"b","Testing",["97 automated tests","Blender 4.2 LTS and 5.1","Buyer-path test on the download"]) +
+    box(1100,540,420,210,"r","Launch",["Gumroad listings + covers","GitHub pages","BlenderNation article"]) +
+    box(80,540,390,210,"o","Result so far",["First paid sale ($19) from","the BlenderNation article","82 referred views"]) +
+    box(80,800,1440,130,"t","Speed",["1.3M triangles split into 8 printable parts with dowels in about 15 seconds; a 600k-face model repaired in about 20 seconds."]),
+    "Python · Blender API (bmesh, booleans, voxel remesh) · pytest-style suites · Gumroad")
+
+cards["portfolio-10-kdp-books"] = page(
+    "Print-ready paperback pipeline (Amazon KDP)",
+    "25 books generated from code: interiors, full-wrap covers and listings, ready to upload",
+    arrows([(470,330,600,330),(1000,330,1100,330),(800,450,800,540),(1300,450,1300,540)]) +
+    box(80,220,390,230,"o","Niche research",["Search and bestseller checks","Low-competition puzzle,","journal and story books"]) +
+    box(600,220,400,230,"t","Interior generator",["Large-print puzzles with","verified unique answers","Journals, planners, stories"]) +
+    box(1100,220,420,230,"p","Cover builder",["Full wrap: back, spine, front","Spine width from page count","Vector art, print-safe"]) +
+    box(600,540,400,210,"b","Print checks",["All fonts embedded (pdffonts)","Trim, margins, spine clearance","Preview pages per book"]) +
+    box(1100,540,420,210,"r","Listing kit",["Title, subtitle, description","7 keywords, categories","Royalty-aware pricing"]) +
+    box(80,540,390,210,"o","Output",["25 print-ready paperbacks","6x9 and 8.5x11 trims","5 imprints"]) +
+    box(80,800,1440,130,"t","Why it matters",["A new book in a proven format takes minutes to build, and every file is checked against the printer's technical rules before upload."]),
+    "Python · ReportLab · Node.js + jsPDF · pdffonts · Amazon KDP")
+
+cards["portfolio-11-printables"] = page(
+    "Printable product generators (Etsy digital downloads)",
+    "Code that builds puzzle, game and planner products, and proves every answer is right",
+    arrows([(470,330,600,330),(1000,330,1100,330),(800,450,800,540),(1300,450,1300,540)]) +
+    box(80,220,390,230,"o","Product ideas",["Scraped marketplace data","Scored niches by demand","and competition"]) +
+    box(600,220,400,230,"t","Generators",["Sudoku with unique solutions","Line-solvable nonograms","Escape room + mystery cases"]) +
+    box(1100,220,420,230,"p","Self-checks",["Every puzzle solved by code","Escape room codes asserted","Math pictures auto-checked"]) +
+    box(600,540,400,210,"b","Listing images",["Hero mockups + previews","'What is included' panels","Bundle collages"]) +
+    box(1100,540,420,210,"r","Publishing",["Created, uploaded and","activated by Etsy API","Sections + bundles"]) +
+    box(80,540,390,210,"o","Output",["60+ digital products","Party games, kids learning,","puzzles, planners"]) +
+    box(80,800,1440,130,"t","Why it matters",["Buyers never get a puzzle with two answers or a wrong code: the build fails before a broken product can ship."]),
+    "Python · ReportLab · Pillow · Etsy API · search + scoring scripts")
+
 for name, doc in cards.items():
+    if not name.startswith(("portfolio-9","portfolio-10","portfolio-11")): continue
     p = SRC / f"{name}.html"; p.write_text(doc)
     png = OUT / f"{name}.png"
     subprocess.run([SH, "--no-sandbox", "--hide-scrollbars", "--virtual-time-budget=4000", "--window-size=1600,1200",
