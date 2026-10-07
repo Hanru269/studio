@@ -126,8 +126,21 @@ cards["portfolio-11-printables"] = page(
     box(80,800,1440,130,"t","Why it matters",["Buyers never get a puzzle with two answers or a wrong code: the build fails before a broken product can ship."]),
     "Python · ReportLab · Pillow · Etsy API · search + scoring scripts")
 
+cards["portfolio-13-accessibility-pipeline"] = page(
+    "Accessibility scanner + outreach pipeline",
+    "Finds EU shops with WCAG problems, writes a personal report, emails it and tracks every reply",
+    arrows([(470,330,600,330),(1000,330,1100,330),(1300,430,1300,540),(1100,640,1000,640),(600,640,470,640)]) +
+    box(80,220,390,210,"o","Lead finder",["Public company data","Size + country rules","One contact per company"]) +
+    box(600,220,400,210,"t","WCAG 2.1 scanner",["Alt text, labels, link names","Zoom blocking, headings, lang","Accessibility statement check"]) +
+    box(1100,220,420,210,"p","Personal email",["Real issues from the scan","Opt-out line in every mail","Daily cap + warm-up"]) +
+    box(1100,540,420,210,"b","Inbox robot",["IMAP every 20 min","Auto-replies + bounces sorted","Opt-outs suppressed for good"]) +
+    box(600,540,400,210,"r","Report on request",["PDF sneak-peek report","Detailed fix list + quote","Excel funnel tracker"]) +
+    box(80,540,390,210,"o","Alerts",["Telegram ping only when a","real person replies","Live counts on a dashboard"]) +
+    box(80,800,1440,130,"t","Why it matters",["Hours of manual auditing become a 60-second scan, and nobody is emailed twice or after they opt out."]),
+    "Python · requests + HTML parsing · SMTP/IMAP · openpyxl · ReportLab · cron")
+
 for name, doc in cards.items():
-    if not name.startswith(("portfolio-9","portfolio-10","portfolio-11")): continue
+    if not name.startswith(("portfolio-13",)): continue
     p = SRC / f"{name}.html"; p.write_text(doc)
     png = OUT / f"{name}.png"
     subprocess.run([SH, "--no-sandbox", "--hide-scrollbars", "--virtual-time-budget=4000", "--window-size=1600,1200",
